@@ -8,6 +8,7 @@ const UserSchema = new Schema<TUser>(
     id: {
       type: String,
       required: true,
+      unique: true,
     },
     password: {
       type: String,
@@ -35,7 +36,6 @@ const UserSchema = new Schema<TUser>(
     timestamps: true,
   },
 );
-
 
 UserSchema.pre('save', async function (next) {
   const user = this; // this refers to the document
