@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import httpStatus from 'http-status';
 import mongoose from 'mongoose';
 import QueryBuilder from '../../builder/QueryBuilder';
@@ -58,7 +57,7 @@ const deleteAdminFromDB = async (id: string) => {
     );
 
     if (!deletedAdmin) {
-      throw new AppError(httpStatus.BAD_REQUEST, 'Failed to delete student');
+      throw new AppError(httpStatus.BAD_REQUEST, 'Failed to delete Admin');
     }
 
     // get user _id from deletedAdmin

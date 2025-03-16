@@ -27,5 +27,5 @@ const updateSemesterRegistrationValidationSchema = z.object({
 
 export const SemesterRegistrationValidations = {
   createSemesterRegistrationValidationSchema,
-  updateSemesterRegistrationValidationSchema
+  updateSemesterRegistrationValidationSchema,
 };

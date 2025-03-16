@@ -32,4 +32,4 @@ process.on('unhandledRejection', () => {
 process.on('uncaughtException', () => {
   console.log('Uncaught Exception is detected, shutting down the server...');
   process.exit(1);
-})
+});
