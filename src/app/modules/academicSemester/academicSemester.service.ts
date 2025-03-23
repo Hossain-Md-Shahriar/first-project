@@ -1,3 +1,4 @@
+import QueryBuilder from '../../builder/QueryBuilder';
 import { academicSemesterNameCodeMapper } from './academicSemester.constant';
 import { TAcademicSemester } from './academicSemester.interface';
 import { AcademicSemester } from './academicSemester.model';
@@ -12,9 +13,19 @@ const createAcademicSemesterIntoDB = async (payload: TAcademicSemester) => {
   return result;
 };
 
-const getAcademicSemestersFromDB = async () => {
-  const result = await AcademicSemester.find();
-  return result;
+const getAcademicSemestersFromDB = async (query: Record<string, unknown>) => {
+  const AcademicSemesterQuery = new QueryBuilder(AcademicSemester.find(), query)
+    .filter()
+    .sort()
+    .paginate()
+    .fields();
+
+  const result = await AcademicSemesterQuery.modelQuery;
+  const meta = await AcademicSemesterQuery.countTotal();
+  return {
+    meta,
+    result,
+  };
 };
 
 const getSingleAcademicSemesterFromDB = async (id: string) => {
